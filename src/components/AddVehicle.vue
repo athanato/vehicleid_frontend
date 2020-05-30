@@ -8,7 +8,7 @@
                         class="form-control"
                         id="title"
                         required
-                        v-model="tutorial.title"
+                        v-model="vehicle.title"
                         name="title"
                 />
             </div>
@@ -19,29 +19,30 @@
                         class="form-control"
                         id="description"
                         required
-                        v-model="tutorial.description"
+                        v-model="vehicle.description"
                         name="description"
                 />
             </div>
 
-            <button @click="saveTutorial" class="btn btn-success">Submit</button>
+            <button @click="saveVehicle" class="btn btn-success">Submit</button>
         </div>
 
         <div v-else>
             <h4>You submitted successfully!</h4>
-            <button class="btn btn-success" @click="newTutorial">Add</button>
+            <button class="btn btn-success" @click="newVehicle">Add</button>
         </div>
     </div>
 </template>
 
 <script>
-    import TutorialDataService from "../services/TutorialDataService";
+    //import VehicleDataService from "../services/VehicleDataService";
+    import VehicleDataService from "../services/VehicleDataService";
 
     export default {
-        name: "add-tutorial",
+        name: "add-vehicle",
         data() {
             return {
-                tutorial: {
+                vehicle: {
                     id: null,
                     title: "",
                     description: "",
@@ -51,15 +52,15 @@
             };
         },
         methods: {
-            saveTutorial() {
+            saveVehicle() {
                 var data = {
                     title: this.tutorial.title,
                     description: this.tutorial.description
                 };
 
-                TutorialDataService.create(data)
+                VehicleDataService.create(data)
                     .then(response => {
-                        this.tutorial.id = response.data.id;
+                        this.vehicle.id = response.data.id;
                         console.log(response.data);
                         this.submitted = true;
                     })
@@ -70,7 +71,7 @@
 
             newTutorial() {
                 this.submitted = false;
-                this.tutorial = {};
+                this.vehicle = {};
             }
         }
     }; }
