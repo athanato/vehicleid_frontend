@@ -3,10 +3,10 @@
         <div class="col-md-8">
             <div class="input-group mb-3">
                 <input type="text" class="form-control" placeholder="Search by title"
-                       v-model="title"/>
+                       v-model="model"/>
                 <div class="input-group-append">
                     <button class="btn btn-outline-secondary" type="button"
-                            @click="searchTitle"
+                            @click="searchModel"
                     >
                         Search
                     </button>
@@ -22,7 +22,7 @@
                     :key="index"
                     @click="setActiveVehicle(vehicle, index)"
                 >
-                    {{ vehicle.title }}
+                    {{ vehicle.model }}
                 </li>
             </ul>
 
@@ -34,13 +34,13 @@
             <div v-if="currentVehicle">
                 <h4>Vehicle</h4>
                 <div>
-                    <label><strong>Title:</strong></label> {{ currentVehicle.title }}
+                    <label><strong>Model:</strong></label> {{ currentVehicle.model }}
                 </div>
                 <div>
-                    <label><strong>Description:</strong></label> {{ currentVehicle.description }} //not descrition
+                    <label><strong>Description:</strong></label> {{ currentVehicle.description }}
                 </div>
                 <div>
-                    <label><strong>Status:</strong></label> {{ currentVehicle.published ? "Published" : "Pending" }} //not published
+                    <label><strong>Status:</strong></label> {{ currentVehicle.registered ? "Registered" : "Pending" }} //not published
                 </div>
 
                 <a class="badge badge-warning"
@@ -67,7 +67,7 @@
                 vehicles: [],
                 currentVehicle: null,
                 currentIndex: -1,
-                title: "" //not title propably model
+                model: ""
             };
         },
         methods: {
@@ -104,8 +104,8 @@
                     });
             },
                //searchModel         findbyModel
-            searchTitle() {
-                VehicleDataService.findByTitle(this.title)
+            searchModel() {
+                VehicleDataService.findByModel(this.model)
                     .then(response => {
                         this.vehicles = response.data;
                         console.log(response.data);

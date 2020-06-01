@@ -25,8 +25,8 @@ class VehicleDataService {
         return http.delete(`/vehicles`);
     }
 
-    findByTitle(title) {
-        return http.get(`/vehicles?title=${title}`);
+    findByModel(model) {
+        return http.get(`/vehicles?model=${model}`);
     }
 }
 

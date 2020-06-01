@@ -2,14 +2,14 @@
     <div class="submit-form">
         <div v-if="!submitted">
             <div class="form-group">
-                <label for="title">Title</label>
+                <label for="model">Model</label>
                 <input
                         type="text"
                         class="form-control"
-                        id="title"
+                        id="model"
                         required
-                        v-model="vehicle.title"
-                        name="title"
+                        v-model="vehicle.model"
+                        name="model"
                 />
             </div>
 
@@ -44,9 +44,9 @@
             return {
                 vehicle: {
                     id: null,
-                    title: "",
+                    model: "",
                     description: "",
-                    published: false
+                    registered: false
                 },
                 submitted: false
             };
@@ -54,8 +54,8 @@
         methods: {
             saveVehicle() {
                 var data = {
-                    title: this.tutorial.title,
-                    description: this.tutorial.description
+                    model: this.tutorial.model,
+                    description: this.vehicle.description
                 };
 
                 VehicleDataService.create(data)
@@ -74,7 +74,9 @@
                 this.vehicle = {};
             }
         }
-    }; }
+
+
+};
 </script>
 
 <style scoped>

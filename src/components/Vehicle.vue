@@ -3,13 +3,13 @@
         <h4>Vehicle</h4>
         <form>
             <div class="form-group">
-                <label for="title">Title</label>
-                <input type="text" class="form-control" id="title"
-                       v-model="currentVehicle.title"
+                <label for="model">Model</label>
+                <input type="text" class="form-control" id="model"
+                       v-model="currentVehicle.model"
                 />
             </div>
             <div class="form-group">
-                <label for="description">Description</label>  //not description
+                <label for="description">Description</label>
                 <input type="text" class="form-control" id="description"
                        v-model="currentVehicle.description"
                 />
@@ -17,20 +17,20 @@
 
             <div class="form-group">
                 <label><strong>Status:</strong></label>
-                {{ currentVehicle.published ? "Published" : "Pending" }}
+                {{ currentVehicle.registered ? "Registered" : "Pending" }}
             </div>
         </form>
 
         <button class="badge badge-primary mr-2"
-                v-if="currentVehicle.published"
-                @click="updatePublished(false)"
+                v-if="currentVehicle.registered"
+                @click="updateRegistered(false)"
         >
-            UnPublish
+            UnRegister
         </button>
         <button v-else class="badge badge-primary mr-2"
-                @click="updatePublished(true)"
+                @click="updateRegistered(true)"
         >
-            Publish
+            Register
         </button>
 
         <button class="badge badge-danger mr-2"
@@ -79,14 +79,14 @@
             updatePublished(status) {
                 var data = {
                     id: this.currentVehicle.id,
-                    title: this.currentVehicle.title,
-                    description: this.currentVehicle.description,  //not description
-                    published: status
+                    model: this.currentVehicle.model,
+                    description: this.currentVehicle.description,
+                    registered: status
                 };
 
                 VehicleDataService.update(this.currentVehicle.id, data)
                     .then(response => {
-                        this.currentVehicle.published = status;
+                        this.currentVehicle.registered = status;
                         console.log(response.data);
                     })
                     .catch(e => {
@@ -94,7 +94,7 @@
                     });
             },
 
-            updateTutorial() {
+            updateVehicle() {
                 VehicleDataService.update(this.currentVehicle.id, this.currentVehicle)
                     .then(response => {
                         console.log(response.data);
