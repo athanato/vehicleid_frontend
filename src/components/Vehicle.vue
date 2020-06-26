@@ -76,7 +76,7 @@
                     });
             },
 
-            updatePublished(status) {
+            updateRegistered(status) {
                 var data = {
                     id: this.currentVehicle.id,
                     model: this.currentVehicle.model,

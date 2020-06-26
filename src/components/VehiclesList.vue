@@ -2,12 +2,12 @@
     <div class="list row">
         <div class="col-md-8">
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Search by title"
-                       v-model="model"/>
+
+                    <input type="text" class="form-control" placeholder="Search by title"
+                           v-model="model"/>
                 <div class="input-group-append">
                     <button class="btn btn-outline-secondary" type="button"
-                            @click="searchModel"
-                    >
+                            @click="searchModel">
                         Search
                     </button>
                 </div>
@@ -40,7 +40,7 @@
                     <label><strong>Description:</strong></label> {{ currentVehicle.description }}
                 </div>
                 <div>
-                    <label><strong>Status:</strong></label> {{ currentVehicle.registered ? "Registered" : "Pending" }} //not published
+                    <label><strong>Status:</strong></label> {{ currentVehicle.registered ? "Registered" : "Pending" }} //not registered
                 </div>
 
                 <a class="badge badge-warning"

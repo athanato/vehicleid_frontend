@@ -54,7 +54,7 @@
         methods: {
             saveVehicle() {
                 var data = {
-                    model: this.tutorial.model,
+                    model: this.vehicle.model,
                     description: this.vehicle.description
                 };
 
@@ -69,7 +69,7 @@
                     });
             },
 
-            newTutorial() {
+            newVehicle() {
                 this.submitted = false;
                 this.vehicle = {};
             }
@@ -79,7 +79,7 @@
 };
 </script>
 
-<style scoped>
+<style>
     .submit-form {
         max-width: 300px;
         margin: auto;
